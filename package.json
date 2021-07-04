@@ -23,12 +23,12 @@
   "dependencies": {
     "multiparty": "^4.2.2",
     "request": "^2.40.0",
-    "split": "^0.3.0",
+    "split": "^1.0.1",
     "stream-stream": "^1.2.6",
-    "through2": "^2.0.0"
+    "through2": "^4.0.2"
   },
   "devDependencies": {
-    "nock": "^0.44.3",
-    "tape": "^2.14.0"
+    "nock": "^13.1.0",
+    "tape": "^5.2.2"
   }
 }

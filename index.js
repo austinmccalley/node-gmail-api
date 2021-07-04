@@ -41,9 +41,9 @@ var formQuery = function (query) {
   var formedQuery = '?'
     , params = {}
 
-  Object.keys(query).forEach(function(key) {
-    if(query[key]) {
-      params[key] = query[key] instanceof Array ?  query[key].join(',') : query[key]
+  Object.keys(query).forEach(function (key) {
+    if (query[key]) {
+      params[key] = query[key] instanceof Array ? query[key].join(',') : query[key]
     }
   })
 
@@ -53,13 +53,13 @@ var formQuery = function (query) {
 }
 
 var retrieve = function (key, q, endpoint, opts) {
-  var result = new Parser({objectMode: true})
+  var result = new Parser({ objectMode: true })
     , combined = ss()
     , opts = opts || {}
     , i = opts.max
     , partsFound = 0
 
-  var loop = function(page) {
+  var loop = function (page) {
     var reqOpts = {
       url: api + '/gmail/v1/users/me/' + endpoint,
       json: true,
@@ -73,7 +73,7 @@ var retrieve = function (key, q, endpoint, opts) {
       }
     }
 
-    var query = formQuery({fields : opts.fields, format : opts.format})
+    var query = formQuery({ fields: opts.fields, format: opts.format })
 
     if (page) reqOpts.qs.pageToken = page
     request(reqOpts, function (err, response, body) {
@@ -131,7 +131,7 @@ var retrieve = function (key, q, endpoint, opts) {
   }
   loop()
 
-  var counter = through(function(obj, enc, cb) {
+  var counter = through(function (obj, enc, cb) {
     i--
     cb(null, obj)
   })
